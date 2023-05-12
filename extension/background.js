@@ -62,11 +62,11 @@ function getRandomDelay(base, min, max) {
 }
 
 // Continuously create tasks
-function watchdog(conn, job) {
+function watchdog(conn, job, baseTime, minTime, maxTime) {
   return function () {
     if (Mutex) return;
-    // delay execution after , 30s ~ 90s
-    var delay = getRandomDelay(3, 3, 9) * 1000;
+    // delay execution after
+    var delay = getRandomDelay(baseTime, minTime, maxTime) * 1000;
     Mutex = true;
     conn.send("创建延时任务:" + delay);
     setTimeout(function () {
@@ -107,9 +107,9 @@ function inject(job, fn) {
   });
 }
 
-function BootStrap(conn, job, report) {
+function BootStrap(conn, job, base, min, max) {
   // reload the page, auto renew the session
-  let w = watchdog(conn, job);
+  let w = watchdog(conn, job, base, min, max);
   setInterval(w, 1000);
 
   // eg, stats report
@@ -128,14 +128,14 @@ AppInit()
       return;
     }
 
-    const { job, server, report } = config;
+    const { job, server, report, base, min, max } = config;
     let conn = GetWebsocketConn(server, report);
 
     let connChecker = setInterval(function () {
       console.log(ConnReady);
       if (ConnReady) {
         clearInterval(connChecker);
-        BootStrap(conn, job, report);
+        BootStrap(conn, job, base, min, max);
         return;
       }
     }, 500);
