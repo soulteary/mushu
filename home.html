@@ -40,7 +40,7 @@
                     var messages = evt.data.split('\n');
                     for (var i = 0; i < messages.length; i++) {
                         var item = document.createElement("div");
-                        item.innerText = messages[i];
+                        item.innerText = "[用户消息] " + messages[i];
                         appendLog(item);
                     }
                 };

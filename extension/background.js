@@ -1,6 +1,7 @@
 const DEFAULT_REPORT_SERVER = "http://localhost:8080/Exchange";
 let ConnReady = false;
 let Mutex = false;
+let TabIdCache = {};
 
 /*! --------------------------------
 // Simple Execution Process
@@ -17,10 +18,9 @@ AppInit()
     let conn = CreateWebsocketConn(server, report);
 
     let connChecker = setInterval(function () {
-      console.log(ConnReady);
       if (ConnReady) {
         clearInterval(connChecker);
-        BootStrap(conn, job, base, min, max);
+        BootStrap(conn, job, report, base, min, max);
         return;
       }
     }, 500);
@@ -35,26 +35,26 @@ AppInit()
 -------------------------------- */
 
 // Continuously create tasks
-function watchdog(conn, job, baseTime, minTime, maxTime) {
+function watchdog(conn, job, report, base, min, max) {
   return function () {
     if (Mutex) return;
     // delay execution after
-    var delay = getRandomDelay(baseTime, minTime, maxTime) * 1000;
+    var delay = getRandomDelay(base, min, max);
     Mutex = true;
-    conn.send("创建延时任务:" + delay);
+    SendMessage(conn, "创建延时任务:" + delay + "秒后执行", report, true);
     setTimeout(function () {
       Mutex = false;
       ReloadPage(job, function (data) {
-        conn.send("页面重载执行结果" + data);
+        SendMessage(conn, "页面重载执行结果" + data, report, true);
       });
-    }, delay);
+    }, delay * 1000);
   };
 }
 
 // Continuously collect data
-function stats(conn) {
+function stats(conn, report) {
   return function () {
-    conn.send("stats ok");
+    SendMessage(conn, "stats ok", report, true);
   };
 }
 
@@ -71,18 +71,18 @@ async function AppInit() {
   return config && config.code == 200 ? config.data : null;
 }
 
-function BootStrap(conn, job, base, min, max) {
+function BootStrap(conn, job, report, base, min, max) {
   // reload the page, auto renew the session
-  let w = watchdog(conn, job, base, min, max);
+  let w = watchdog(conn, job, report, base, min, max);
   setInterval(w, 1000);
 
   // eg, stats report
-  let s = stats(conn);
+  let s = stats(conn, report);
   setInterval(s, 1000);
 
   // eg, inject code, scroll the page to bottom...
   setInterval(function () {
-    Execute(job, scrollPageToBottom);
+    ExecuteAll(job, "scroll.js", true);
   }, 1000);
 }
 
@@ -95,15 +95,27 @@ function BootStrap(conn, job, base, min, max) {
  * @param {string} job
  * @param {function} fn
  */
-function Execute(job, fn) {
+function ExecuteAll(job, fn, isFile) {
   chrome.tabs.query({ url: job }, function (tabs) {
     tabs.forEach(function (tab) {
-      chrome.scripting.executeScript({ target: { tabId: tab.id, allFrames: true }, func: fn }).then((injectionResults) => {
-        for (const frameResult of injectionResults) {
-          const { frameId, result } = frameResult;
-          console.log(`Frame #${frameId} 执行结果:`, result);
-        }
-      });
+      TabIdCache = {};
+      TabIdCache[tab.id] = true;
+      ExecuteByID([tab.id], fn, isFile);
+    });
+  });
+}
+
+function ExecuteByID(tabIDs, fn, isFile) {
+  console.log(tabIDs, fn, isFile);
+  let details = { allFrames: false };
+  if (isFile) {
+    details.file = fn;
+  } else {
+    details.code = fn;
+  }
+  tabIDs.forEach(function (tabID) {
+    chrome.tabs.executeScript(Number(tabID), details, function (result) {
+      console.log("执行结果:", result);
     });
   });
 }
@@ -160,15 +172,29 @@ function CreateWebsocketConn(server, report) {
     ConnReady = false;
   };
   conn.onmessage = function (evt) {
-    var messages = evt.data.split("\n");
-    for (var i = 0; i < messages.length; i++) {
-      console.log(messages[i]);
-    }
+    var message = (evt.data + "").trim();
+    if (!message) return;
+    if (message.startsWith("[插件消息]") || message.startsWith("[浏览器消息]")) return;
+    console.log(message);
+
+    ExecuteByID(Object.keys(TabIdCache), message);
   };
   conn.onopen = function () {
     ConnReady = true;
   };
   return conn;
+}
+
+function SendMessage(conn, message, report, isPlugin) {
+  if (ConnReady) {
+    if (isPlugin) {
+      conn.send("[插件消息] " + message);
+    } else {
+      conn.send("[浏览器消息] " + message);
+    }
+  } else {
+    Exchange(report, "Connection unexpected interruption.");
+  }
 }
 
 /*! --------------------------------
@@ -184,24 +210,4 @@ function CreateWebsocketConn(server, report) {
  */
 function getRandomDelay(base, min, max) {
   return base + Math.floor(Math.random() * min) + max;
-}
-
-/**
- * Scroll the page to bottom
- * @returns void
- */
-async function scrollPageToBottom() {
-  return new Promise((resolve) => {
-    let totalHeight = 0;
-    let distance = 500;
-    let timer = setInterval(() => {
-      let scrollHeight = document.body.scrollHeight;
-      window.scrollBy(0, distance);
-      totalHeight += distance;
-      if (totalHeight >= scrollHeight) {
-        clearInterval(timer);
-        resolve();
-      }
-    }, 100);
-  });
 }

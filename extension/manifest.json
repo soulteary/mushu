@@ -7,19 +7,18 @@
         "128": "icon.png"
     },
     "background": {
-        "service_worker": "background.js",
-        "type": "module"
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": true
     },
     "permissions": [
         "activeTab",
-        "scripting",
-        "background",
+        "webRequest",
         "tabs",
-        "webRequest"
+        "<all_urls>"
     ],
-    "host_permissions": [
-        "https://*/*",
-        "http://*/*"
-    ],
-    "manifest_version": 3
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+    "minimum_chrome_version": "41",
+    "manifest_version": 2
 }
