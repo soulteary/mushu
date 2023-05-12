@@ -1,355 +1,170 @@
-<!-- copy from https://soulteary.com/ -->
-<!DOCTYPE html>
-<html lang="en" dir="ltr" class="no-js theme-united">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="renderer" content="webkit" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no" />
-    <meta name="author" content="soulteary@gmail.com" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="苏洋博客" />
-    <meta property="og:description" content="记录点滴成长，分享技术经验。" />
-    <meta name="description" content="记录点滴成长，分享技术经验。">
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://soulteary.com/" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="苏洋博客" />
-    <meta name="twitter:description" content="" />
-    <meta name="keywords" content="苏洋博客, 技术博客, 个人博客, soulteary, 苏洋">
-    <link rel="canonical" href="https://soulteary.com/">
-    <title>苏洋博客</title>
-    <link rel="stylesheet" href="https://soulteary.com/common.css?v=Small&t=20220617-1r" />
-    <link rel="stylesheet" href="https://soulteary.com/index.css?v=Small&t=20220617-1r" />
-    <link rel="shortcut icon" href="/favicon.ico?v=Small&t=20220617-1r">
-    <script>
-        /**!
-         * @package:    Init
-         * @copyright:  Copyright (c) 2007 - 2018, soulteary.com All Rights Reserved / Available via the MIT license.
-         */
-
-        top != self && top.host != self.host && (top.location = self.location);
-        (function (d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);
-
-        /**!
-         * @package:    Global Config
-         * @copyright:  Copyright (c) 2007 - 2018, soulteary.com All Rights Reserved / Available via the MIT license.
-         */
-        var $CONFIG = { 'data': {} };
-
-    </script>
-    <link href="https://soulteary.com/feed/" rel="alternate" type="application/rss+xml" title="苏洋博客" />
-    <script src="https://soulteary.com/asset/vendor/zepto.min.js?v=Small&t=20220617-1r"></script>
-    <script src="https://soulteary.com/common.js?v=Small&t=20220617-1r"></script>
-</head>
-
-<body class="page page-is-loading page-type-page page-type-home">
-    <nav class="navbar navbar-default g-navbar-box hidden-print" id="Js_page-navbar">
-        <div class="navbar-header"><button type="button" class="navbar-toggle collapsed" aria-label="浏览导航"
-                data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span
-                    class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand"
-                href="https://soulteary.com/" title="苏洋博客">苏洋博客</a></div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right" id="JS_nav_list">
-                <li class="menu-item"><a class="menu-item-link" href="/" title="查看网站首页的内容">网站首页</a></li>
-                <li class="menu-item"><a class="menu-item-link" href="/subject/life/" title="查看工作生活分类下的文章">工作生活</a></li>
-                <li class="menu-item"><a class="menu-item-link" href="/subject/code/" title="查看编程记录分类下的文章">编程记录</a></li>
-                <li class="menu-item"><a class="menu-item-link" href="/subject/tech/" title="查看知识地图分类下的文章">知识地图</a></li>
-                <li class="menu-item"><a class="menu-item-link" href="/archives.html" title="查看文章存档页面的内容">文章存档</a></li>
-                <li class="menu-item"><a class="menu-item-link" href="/about/" title="查看关于苏洋页面的内容">关于苏洋</a>
-                    <ul class="dropdown-menu bounceIn">
-                        <li><a href="/about-site" title="查看本站运行状况">关于本站</a></li>
-                        <li><a href="https://github.com/soulteary/" rel="noopener" target="_blank"
-                                title="访问GitHub个人主页">GitHub</a></li>
-                        <li><a href="https://suyang.wiki" rel="noreferrer" target="_blank" title="查看折腾笔记内容">折腾笔记</a>
-                        </li>
-                        <li><a href="/contact/" title="查看联系页面的内容">联系作者</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="page-loading-bar"></div>
-    <div class="feature-cover-container hidden-xs">
-        <div class="feature-cover-box">
-            <h3></h3>
-            <p class="feature-cover-content">醉里不知天在水，满船清梦压星河。</p>
-        </div>
-        <div class="feature-cover-image"></div>
-    </div>
-    <div class="container-fluid main-container" id="J_main-container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="hide page-title">首页</h1>
-                <h2 class="page-title">最近更新 <div class="search-input-container pull-right"><input type="search"
-                            id="aa-search-input" class="aa-input-search" placeholder="站内搜索" name="search"
-                            autocomplete="off" /><label for="aa-search-input">站内搜索<svg class="search-input-icon"
-                                viewBox="654 -372 1664 1664">
-                                <path
-                                    d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
-                            </svg></label></div>
-                </h2>
-            </div>
-            <div class="col-md-12">
-                <div class="algolia-autocomplete">
-                    <div id="algolia-result-container"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row post-article-normal">
-            <div class="col-md-12">
-                <div class="post-container">
-                    <h2 class="post-title"><a
-                            href="https://soulteary.com/2023/04/11/make-ubuntu-native-remote-control-reliable-with-urch.html"
-                            rel="bookmark">使用 Urch 让 Ubuntu 原生远程控制功能稳定可靠</a></h2>
-                    <div class="meta-box"><span class="m-post-date"><i
-                                class="fa fa-calendar-o"></i>2023年04月11日</span><span class="tag-links"><i
-                                class="fa fa-tags" aria-hidden="true"></i><a href="/tags/urch.html" rel="tag">Urch</a>,
-                            <a href="/tags/remote-control.html" rel="tag">Remote Control</a>, <a
-                                href="/tags/golang.html" rel="tag">Golang</a>, <a href="/tags/ubuntu.html"
-                                rel="tag">Ubuntu</a>, <a href="/tags/homelab.html" rel="tag">HomeLab</a>, <a
-                                href="/tags/linux.html" rel="tag">Linux</a></span></div>
-                    <div class="post-content post-expect"> 有些时候，使用远程控制能够简化不少运维和操作的事情。本篇文章分享如何通过开源工具 “Urch（Ubuntu Remote
-                        Control Helper）” 让 Ubuntu 原生的远程控制（远程桌面）功能稳定可靠。方案已经经过 Ubuntu 22.04 LTS 和最新版本的 Ubuntu 22.10
-                        两个版本的验证。
-
-
-                        <a class="more-link btn btn-primary btn-xs"
-                            href='https://soulteary.com/2023/04/11/make-ubuntu-native-remote-control-reliable-with-urch.html'>阅读全文</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row post-article-normal">
-            <div class="col-md-12">
-                <div class="post-container">
-                    <h2 class="post-title"><a
-                            href="https://soulteary.com/2023/04/05/eighty-lines-of-code-to-implement-the-open-source-midjourney-and-stable-diffusion-spell-drawing-tool.html"
-                            rel="bookmark">八十行代码实现开源的 Midjourney、Stable Diffusion “咒语”作图工具</a></h2>
-                    <div class="meta-box"><span class="m-post-date"><i
-                                class="fa fa-calendar-o"></i>2023年04月05日</span><span class="tag-links"><i
-                                class="fa fa-tags" aria-hidden="true"></i><a href="/tags/midjourney.html"
-                                rel="tag">Midjourney</a>, <a href="/tags/stable-diffusion.html" rel="tag">Stable
-                                Diffusion</a>, <a href="/tags/clip.html" rel="tag">CLIP</a>, <a href="/tags/blip.html"
-                                rel="tag">BLIP</a>, <a href="/tags/gpt.html" rel="tag">GPT</a>, <a
-                                href="/tags/opus.html" rel="tag">OPUS</a>, <a href="/tags/python.html"
-                                rel="tag">Python</a>, <a href="/tags/docker.html" rel="tag">Docker</a>, <a
-                                href="/tags/linux.html" rel="tag">Linux</a></span></div>
-                    <div class="post-content post-expect"> 本篇文章聊聊如何通过 Docker 和八十行左右的 Python 代码，实现一款类似 Midjourney
-                        官方图片解析功能 Describe 的 Prompt 工具。让你在玩 Midjourney、Stable Diffusion 这类模型时，不再为生成 Prompt 描述挠头。
-
-
-                        <a class="more-link btn btn-primary btn-xs"
-                            href='https://soulteary.com/2023/04/05/eighty-lines-of-code-to-implement-the-open-source-midjourney-and-stable-diffusion-spell-drawing-tool.html'>阅读全文</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row post-article-normal">
-            <div class="col-md-12">
-                <div class="post-container">
-                    <h2 class="post-title"><a
-                            href="https://soulteary.com/2023/03/25/model-talk-open-source-model-of-rnn-14b-that-can-run-on-little-gpu-memory-chatrwkv.html"
-                            rel="bookmark">模型杂谈：1.5G 显存就能运行的 RNN 14B 的开源模型（ChatRWKV）</a></h2>
-                    <div class="meta-box"><span class="m-post-date"><i
-                                class="fa fa-calendar-o"></i>2023年03月25日</span><span class="tag-links"><i
-                                class="fa fa-tags" aria-hidden="true"></i><a href="/tags/chatrwkv.html"
-                                rel="tag">ChatRWKV</a>, <a href="/tags/python.html" rel="tag">Python</a>, <a
-                                href="/tags/docker.html" rel="tag">Docker</a>, <a href="/tags/linux.html"
-                                rel="tag">Linux</a></span></div>
-                    <div class="post-content post-expect"> 这篇文章中，我们来聊聊如何快速上手一众模型里，具有 14B 参数，但是比较特别的 RNN
-                        模型：ChatRWKV。本文将介绍如何快手上手，包含使用一张 24 显存的 4090 高速推理生成内容，以及如何只使用 1.5G 显存就能运行这个模型。
-
-
-                        <a class="more-link btn btn-primary btn-xs"
-                            href='https://soulteary.com/2023/03/25/model-talk-open-source-model-of-rnn-14b-that-can-run-on-little-gpu-memory-chatrwkv.html'>阅读全文</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row post-article-normal">
-            <div class="col-md-12">
-                <div class="post-container">
-                    <h2 class="post-title"><a
-                            href="https://soulteary.com/2023/03/25/model-finetuning-on-llama-65b-large-model-using-docker-and-alpaca-lora.html"
-                            rel="bookmark">使用 Docker 和 Alpaca LoRA 对 LLaMA 65B 大模型进行 Fine-Tune</a></h2>
-                    <div class="meta-box"><span class="m-post-date"><i
-                                class="fa fa-calendar-o"></i>2023年03月25日</span><span class="tag-links"><i
-                                class="fa fa-tags" aria-hidden="true"></i><a href="/tags/alpaca-lora.html"
-                                rel="tag">Alpaca LoRA</a>, <a href="/tags/llama.html" rel="tag">LLaMA</a>, <a
-                                href="/tags/python.html" rel="tag">Python</a>, <a href="/tags/docker.html"
-                                rel="tag">Docker</a>, <a href="/tags/linux.html" rel="tag">Linux</a></span></div>
-                    <div class="post-content post-expect"> 这篇文章中，我们来聊聊如何使用两张显卡来进行 LLaMA 65B 大模型的微调工作，以及如何在一张普通的 4090
-                        家用显卡上，只花几个小时，就能够完成 7B 模型的微调。
-
-
-                        <a class="more-link btn btn-primary btn-xs"
-                            href='https://soulteary.com/2023/03/25/model-finetuning-on-llama-65b-large-model-using-docker-and-alpaca-lora.html'>阅读全文</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row post-article-normal">
-            <div class="col-md-12">
-                <div class="post-container">
-                    <h2 class="post-title"><a
-                            href="https://soulteary.com/2023/03/22/docker-based-deep-learning-environment-getting-started.html"
-                            rel="bookmark">基于 Docker 的深度学习环境：入门篇</a></h2>
-                    <div class="meta-box"><span class="m-post-date"><i
-                                class="fa fa-calendar-o"></i>2023年03月22日</span><span class="tag-links"><i
-                                class="fa fa-tags" aria-hidden="true"></i><a href="/tags/deep-learning.html"
-                                rel="tag">Deep Learning</a>, <a href="/tags/ubuntu.html" rel="tag">Ubuntu</a>, <a
-                                href="/tags/docker.html" rel="tag">Docker</a>, <a href="/tags/homelab.html"
-                                rel="tag">HomeLab</a>, <a href="/tags/linux.html" rel="tag">Linux</a></span></div>
-                    <div class="post-content post-expect"> 这篇文章聊聊如何从零到一安装、配置一个基于 Docker 容器的深度学习环境。
-
-
-                        <a class="more-link btn btn-primary btn-xs"
-                            href='https://soulteary.com/2023/03/22/docker-based-deep-learning-environment-getting-started.html'>阅读全文</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row post-article-normal">
-            <div class="col-md-12">
-                <div class="post-container">
-                    <h2 class="post-title"><a
-                            href="https://soulteary.com/2023/03/13/quick-start-llama-model-created-by-meta-research-with-int8.html"
-                            rel="bookmark">模型杂谈：使用 IN8 量化推理运行 Meta “开源泄露”的大模型（LLaMA）</a></h2>
-                    <div class="meta-box"><span class="m-post-date"><i
-                                class="fa fa-calendar-o"></i>2023年03月13日</span><span class="tag-links"><i
-                                class="fa fa-tags" aria-hidden="true"></i><a href="/tags/llama.html"
-                                rel="tag">LLaMA</a>, <a href="/tags/python.html" rel="tag">Python</a>, <a
-                                href="/tags/docker.html" rel="tag">Docker</a>, <a href="/tags/linux.html"
-                                rel="tag">Linux</a></span></div>
-                    <div class="post-content post-expect"> 接着之前文章[《模型杂谈：快速上手元宇宙大厂 Meta
-                        “开源泄露”的大模型（LLaMA）》]一文中的话题，继续聊聊如何使用 INT8 量化的方式来让低显存的设备能够将模型运行起来。
-
-
-                        <a class="more-link btn btn-primary btn-xs"
-                            href='https://soulteary.com/2023/03/13/quick-start-llama-model-created-by-meta-research-with-int8.html'>阅读全文</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row post-article-normal">
-            <div class="col-md-12">
-                <div class="post-container">
-                    <h2 class="post-title"><a
-                            href="https://soulteary.com/2023/03/12/stable-web-terminal-services-using-docker-nginx-and-ttyd.html"
-                            rel="bookmark">使用 Docker、Nginx 和 ttyd 提供稳定的 Web 终端服务</a></h2>
-                    <div class="meta-box"><span class="m-post-date"><i
-                                class="fa fa-calendar-o"></i>2023年03月12日</span><span class="tag-links"><i
-                                class="fa fa-tags" aria-hidden="true"></i><a href="/tags/ttyd.html" rel="tag">ttyd</a>,
-                            <a href="/tags/web-terminal.html" rel="tag">Web Terminal</a>, <a
-                                href="/tags/supervisor.html" rel="tag">Supervisor</a>, <a href="/tags/nginx.html"
-                                rel="tag">Nginx</a>, <a href="/tags/docker.html" rel="tag">Docker</a>, <a
-                                href="/tags/linux.html" rel="tag">Linux</a></span></div>
-                    <div class="post-content post-expect"> 本篇文章分享一个小技巧，如何直接将你的设备的终端通过“浏览器”进行分享。
-
-
-                        <a class="more-link btn btn-primary btn-xs"
-                            href='https://soulteary.com/2023/03/12/stable-web-terminal-services-using-docker-nginx-and-ttyd.html'>阅读全文</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row post-article-normal">
-            <div class="col-md-12">
-                <div class="post-container">
-                    <h2 class="post-title"><a
-                            href="https://soulteary.com/2023/03/09/quick-start-llama-model-created-by-meta-research.html"
-                            rel="bookmark">模型杂谈：快速上手元宇宙大厂 Meta “开源泄露”的大模型（LLaMA）</a></h2>
-                    <div class="meta-box"><span class="m-post-date"><i
-                                class="fa fa-calendar-o"></i>2023年03月09日</span><span class="tag-links"><i
-                                class="fa fa-tags" aria-hidden="true"></i><a href="/tags/llama.html"
-                                rel="tag">LLaMA</a>, <a href="/tags/python.html" rel="tag">Python</a>, <a
-                                href="/tags/docker.html" rel="tag">Docker</a>, <a href="/tags/linux.html"
-                                rel="tag">Linux</a></span></div>
-                    <div class="post-content post-expect"> 本篇文章聊聊如何低成本快速上手使用 Meta（Facebook）的开源模型 LLaMA。
-
-
-                        <a class="more-link btn btn-primary btn-xs"
-                            href='https://soulteary.com/2023/03/09/quick-start-llama-model-created-by-meta-research.html'>阅读全文</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row post-article-normal">
-            <div class="col-md-12">
-                <div class="post-container">
-                    <h2 class="post-title"><a
-                            href="https://soulteary.com/2023/03/05/model-discussion-chatyuan-with-delisting-storm.html"
-                            rel="bookmark">模型杂谈：遭遇“下架风波”的首个国产语言大模型元语（ChatYuan）</a></h2>
-                    <div class="meta-box"><span class="m-post-date"><i
-                                class="fa fa-calendar-o"></i>2023年03月05日</span><span class="tag-links"><i
-                                class="fa fa-tags" aria-hidden="true"></i><a href="/tags/chat-yuan.html" rel="tag">Chat
-                                Yuan</a>, <a href="/tags/python.html" rel="tag">Python</a>, <a href="/tags/docker.html"
-                                rel="tag">Docker</a>, <a href="/tags/linux.html" rel="tag">Linux</a></span></div>
-                    <div class="post-content post-expect"> 本篇文章，聊聊上线后引发媒体宣传，又迅速消失在公众视野中的 NLP 语言模型，元语（ChatYuan）。
-
-
-                        <a class="more-link btn btn-primary btn-xs"
-                            href='https://soulteary.com/2023/03/05/model-discussion-chatyuan-with-delisting-storm.html'>阅读全文</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row post-article-last">
-            <div class="col-md-12">
-                <div class="post-container">
-                    <h2 class="post-title"><a
-                            href="https://soulteary.com/2023/02/23/exploring-github-open-datasets.html"
-                            rel="bookmark">探索开源：获取完整的 GitHub 社区数据集</a></h2>
-                    <div class="meta-box"><span class="m-post-date"><i
-                                class="fa fa-calendar-o"></i>2023年02月23日</span><span class="tag-links"><i
-                                class="fa fa-tags" aria-hidden="true"></i><a
-                                href="/tags/%e6%95%b0%e6%8d%ae%e9%9b%86.html" rel="tag">数据集</a>, <a
-                                href="/tags/github.html" rel="tag">GitHub</a>, <a href="/tags/bash.html"
-                                rel="tag">Bash</a>, <a href="/tags/linux.html" rel="tag">Linux</a></span></div>
-                    <div class="post-content post-expect"> 本篇文章聊聊 GitHub 开放数据集的获取和整理，分享一些数据整理的细节技巧，以及一些相对粗浅的数据背后的事情。
-
-
-                        <a class="more-link btn btn-primary btn-xs"
-                            href='https://soulteary.com/2023/02/23/exploring-github-open-datasets.html'>阅读全文</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row home-more-container">
-            <div class="col-md-12">
-                <h2 class="page-title">更多内容</h2>
-            </div>
-            <div class="col-md-12">
-                <div class="post-container">
-                    <div class="row">
-                        <div class="col-md-4"><a class="btn btn-primary home-browser-more-btn"
-                                href="/page/2.html">浏览博客更多文章</a></div>
-                        <div class="col-md-8"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid main-container" id="J_footer-container">
-        <script>
-            $CONFIG['data']['footerLink'] = [
-                { "name": "网站首页", "link": "/" },
-                { "name": "关于苏洋", "link": "/about/" },
-                { "name": "日志页面", "link": "/page/2.html" },
-                { "name": "文章存档", "link": "/archives.html" },
-                { "name": "网站说明", "link": "/about-site/" },
-                { "name": "给我留言", "link": "/contact/" }
-            ];
-        </script>
-    </div>
-    <script src="https://soulteary.com/index.js?v=Small&t=20220617-1r"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2D21GW0C37"></script>
-    <script>
-        window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-2D21GW0C37');
-        try { var _hmt = _hmt || [], hm = document.createElement("script"), s = document.getElementsByTagName("script")[0]; hm.src = "https://hm.baidu.com/hm.js?0715c046951d486884dd1dc376fb479d"; s.parentNode.insertBefore(hm, s); } catch (e) { }
-    </script>
-</body>
-
+<html lang="en" op="news"><head><meta name="referrer" content="origin"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" type="text/css" href="news.css?ZMP1aX0w3aWi60BYoAGZ">
+    <link rel="shortcut icon" href="favicon.ico">
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="rss">
+    <title>Hacker News</title></head><body><center><table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+    <tr><td bgcolor="#ff6600"><table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px"><tr><td style="width:18px;padding-right:4px"><a href="https://news.ycombinator.com"><img src="y18.svg" width="18" height="18" style="border:1px white solid;"></a></td>
+              <td style="line-height:12pt; height:10px;"><span class="pagetop"><b class="hnname"><a href="news">Hacker News</a></b>
+                        <a href="newest">new</a> | <a href="front">past</a> | <a href="newcomments">comments</a> | <a href="ask">ask</a> | <a href="show">show</a> | <a href="jobs">jobs</a> | <a href="submit">submit</a>            </span></td><td style="text-align:right;padding-right:4px;"><span class="pagetop">
+                          <a href="login?goto=news">login</a>
+                      </span></td>
+          </tr></table></td></tr>
+<tr id="pagespace" title="" style="height:10px"></tr><tr><td><table border="0" cellpadding="0" cellspacing="0">
+        <tr class='athing' id='35916064'>
+  <td align="right" valign="top" class="title"><span class="rank">1.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35916064'href='vote?id=35916064&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://jvns.ca/blog/2023/05/12/introducing-implement-dns-in-a-weekend/">Introducing &quot;Implement DNS in a Weekend&quot;</a><span class="sitebit comhead"> (<a href="from?site=jvns.ca"><span class="sitestr">jvns.ca</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35916064">124 points</span> by <a href="user?id=asicsp" class="hnuser">asicsp</a> <span class="age" title="2023-05-12T13:37:45"><a href="item?id=35916064">1 hour ago</a></span> <span id="unv_35916064"></span> | <a href="hide?id=35916064&amp;goto=news">hide</a> | <a href="item?id=35916064">10&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35914447'>
+  <td align="right" valign="top" class="title"><span class="rank">2.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35914447'href='vote?id=35914447&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://zlib.net/pigz/">Pigz: Parallel gzip for modern multi-processor, multi-core machines</a><span class="sitebit comhead"> (<a href="from?site=zlib.net"><span class="sitestr">zlib.net</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35914447">147 points</span> by <a href="user?id=ingve" class="hnuser">ingve</a> <span class="age" title="2023-05-12T10:51:40"><a href="item?id=35914447">4 hours ago</a></span> <span id="unv_35914447"></span> | <a href="hide?id=35914447&amp;goto=news">hide</a> | <a href="item?id=35914447">78&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35915923'>
+  <td align="right" valign="top" class="title"><span class="rank">3.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35915923'href='vote?id=35915923&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://microcorelabs.wordpress.com/2023/04/28/ibm-pc-8088-replaced-with-a-motorola-68000/">IBM PC 8088 replaced with a Motorola 68000</a><span class="sitebit comhead"> (<a href="from?site=microcorelabs.wordpress.com"><span class="sitestr">microcorelabs.wordpress.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35915923">35 points</span> by <a href="user?id=elvis70" class="hnuser">elvis70</a> <span class="age" title="2023-05-12T13:25:54"><a href="item?id=35915923">1 hour ago</a></span> <span id="unv_35915923"></span> | <a href="hide?id=35915923&amp;goto=news">hide</a> | <a href="item?id=35915923">18&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35901642'>
+  <td align="right" valign="top" class="title"><span class="rank">4.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35901642'href='vote?id=35901642&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://blog.ganssle.io/articles/2018/03/pytz-fastest-footgun.html">Pytz: The Fastest Footgun in the West</a><span class="sitebit comhead"> (<a href="from?site=ganssle.io"><span class="sitestr">ganssle.io</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35901642">152 points</span> by <a href="user?id=djoldman" class="hnuser">djoldman</a> <span class="age" title="2023-05-11T13:22:44"><a href="item?id=35901642">8 hours ago</a></span> <span id="unv_35901642"></span> | <a href="hide?id=35901642&amp;goto=news">hide</a> | <a href="item?id=35901642">64&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35913241'>
+  <td align="right" valign="top" class="title"><span class="rank">5.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35913241'href='vote?id=35913241&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://bqnpad.mechanize.systems/">BQNPAD</a><span class="sitebit comhead"> (<a href="from?site=mechanize.systems"><span class="sitestr">mechanize.systems</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35913241">43 points</span> by <a href="user?id=tosh" class="hnuser">tosh</a> <span class="age" title="2023-05-12T07:51:32"><a href="item?id=35913241">4 hours ago</a></span> <span id="unv_35913241"></span> | <a href="hide?id=35913241&amp;goto=news">hide</a> | <a href="item?id=35913241">5&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35906783'>
+  <td align="right" valign="top" class="title"><span class="rank">6.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35906783'href='vote?id=35906783&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://tedgioia.substack.com/p/how-an-ibm-computer-learned-to-sing">An IBM computer learned to sing in 1961</a><span class="sitebit comhead"> (<a href="from?site=tedgioia.substack.com"><span class="sitestr">tedgioia.substack.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35906783">19 points</span> by <a href="user?id=isomorph" class="hnuser">isomorph</a> <span class="age" title="2023-05-11T19:02:42"><a href="item?id=35906783">3 hours ago</a></span> <span id="unv_35906783"></span> | <a href="hide?id=35906783&amp;goto=news">hide</a> | <a href="item?id=35906783">12&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35911406'>
+  <td align="right" valign="top" class="title"><span class="rank">7.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35911406'href='vote?id=35911406&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://futo.org/">FUTO – An independent software lab and grant fund</a><span class="sitebit comhead"> (<a href="from?site=futo.org"><span class="sitestr">futo.org</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35911406">193 points</span> by <a href="user?id=doodlesdev" class="hnuser">doodlesdev</a> <span class="age" title="2023-05-12T03:07:05"><a href="item?id=35911406">12 hours ago</a></span> <span id="unv_35911406"></span> | <a href="hide?id=35911406&amp;goto=news">hide</a> | <a href="item?id=35911406">34&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35914726'>
+  <td align="right" valign="top" class="title"><span class="rank">8.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35914726'href='vote?id=35914726&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://www.youtube.com/watch?v=IFe9wiDfb0E">Welcome to Life: the singularity, ruined by lawyers by Tom Scott</a><span class="sitebit comhead"> (<a href="from?site=youtube.com"><span class="sitestr">youtube.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35914726">106 points</span> by <a href="user?id=nabla9" class="hnuser">nabla9</a> <span class="age" title="2023-05-12T11:38:04"><a href="item?id=35914726">3 hours ago</a></span> <span id="unv_35914726"></span> | <a href="hide?id=35914726&amp;goto=news">hide</a> | <a href="item?id=35914726">34&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35913173'>
+  <td align="right" valign="top" class="title"><span class="rank">9.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35913173'href='vote?id=35913173&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://evadb.readthedocs.io/en/stable/index.html">Eva AI-Relational Database System</a><span class="sitebit comhead"> (<a href="from?site=evadb.readthedocs.io"><span class="sitestr">evadb.readthedocs.io</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35913173">51 points</span> by <a href="user?id=jonbaer" class="hnuser">jonbaer</a> <span class="age" title="2023-05-12T07:40:31"><a href="item?id=35913173">7 hours ago</a></span> <span id="unv_35913173"></span> | <a href="hide?id=35913173&amp;goto=news">hide</a> | <a href="item?id=35913173">7&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35912374'>
+  <td align="right" valign="top" class="title"><span class="rank">10.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35912374'href='vote?id=35912374&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://scientificcoder.com/extreme-multi-threading-c-and-julia-19-integration">Extreme Multi-Threading: C++ and Julia 1.9 Integration</a><span class="sitebit comhead"> (<a href="from?site=scientificcoder.com"><span class="sitestr">scientificcoder.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35912374">92 points</span> by <a href="user?id=pieterr" class="hnuser">pieterr</a> <span class="age" title="2023-05-12T05:44:55"><a href="item?id=35912374">9 hours ago</a></span> <span id="unv_35912374"></span> | <a href="hide?id=35912374&amp;goto=news">hide</a> | <a href="item?id=35912374">19&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35914929'>
+  <td align="right" valign="top" class="title"><span class="rank">11.</span></td>      <td><img src="s.gif" height="1" width="14"></td>       <td class="title"><span class="titleline"><a href="item?id=35914929">Kalshi (YC W19) Is Hiring</a></span></td></tr><tr><td colspan="2"></td><td class="subtext">
+    <span class="age" title="2023-05-12T12:00:05"><a href="item?id=35914929">3 hours ago</a></span> | <a href="hide?id=35914929&amp;goto=news">hide</a>      </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35913572'>
+  <td align="right" valign="top" class="title"><span class="rank">12.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35913572'href='vote?id=35913572&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://unrelatedwords.com">Unrelated Words Puzzle</a><span class="sitebit comhead"> (<a href="from?site=unrelatedwords.com"><span class="sitestr">unrelatedwords.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35913572">48 points</span> by <a href="user?id=danieltait" class="hnuser">danieltait</a> <span class="age" title="2023-05-12T08:43:27"><a href="item?id=35913572">6 hours ago</a></span> <span id="unv_35913572"></span> | <a href="hide?id=35913572&amp;goto=news">hide</a> | <a href="item?id=35913572">37&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35905437'>
+  <td align="right" valign="top" class="title"><span class="rank">13.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35905437'href='vote?id=35905437&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://www.boringreport.org/">Show HN: Boring Report, a news app that uses AI to desensationalize the news</a><span class="sitebit comhead"> (<a href="from?site=boringreport.org"><span class="sitestr">boringreport.org</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35905437">1058 points</span> by <a href="user?id=aquaVitae" class="hnuser">aquaVitae</a> <span class="age" title="2023-05-11T17:32:41"><a href="item?id=35905437">21 hours ago</a></span> <span id="unv_35905437"></span> | <a href="hide?id=35905437&amp;goto=news">hide</a> | <a href="item?id=35905437">304&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35914013'>
+  <td align="right" valign="top" class="title"><span class="rank">14.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35914013'href='vote?id=35914013&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://www.theregister.com/2023/05/12/eu_cyber_resilience_act/">EU&#x27;s Cyber Resilience Act contains a poison pill</a><span class="sitebit comhead"> (<a href="from?site=theregister.com"><span class="sitestr">theregister.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35914013">97 points</span> by <a href="user?id=jjgreen" class="hnuser">jjgreen</a> <span class="age" title="2023-05-12T09:49:14"><a href="item?id=35914013">5 hours ago</a></span> <span id="unv_35914013"></span> | <a href="hide?id=35914013&amp;goto=news">hide</a> | <a href="item?id=35914013">60&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35902942'>
+  <td align="right" valign="top" class="title"><span class="rank">15.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35902942'href='vote?id=35902942&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://www.readysetcloud.io/blog/allen.helton/serverless-integration-speed-test/" rel="nofollow">Comparing Speed of Lambda, Step Functions, App Runner, and Direct Integrations</a><span class="sitebit comhead"> (<a href="from?site=readysetcloud.io"><span class="sitestr">readysetcloud.io</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35902942">5 points</span> by <a href="user?id=kiyanwang" class="hnuser">kiyanwang</a> <span class="age" title="2023-05-11T14:47:39"><a href="item?id=35902942">2 hours ago</a></span> <span id="unv_35902942"></span> | <a href="hide?id=35902942&amp;goto=news">hide</a> | <a href="item?id=35902942">1&nbsp;comment</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35913083'>
+  <td align="right" valign="top" class="title"><span class="rank">16.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35913083'href='vote?id=35913083&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://www.chicagomag.com/chicago-magazine/may-2023/the-last-gamble-of-tokyo-joe/">The Last Gamble of Tokyo Joe</a><span class="sitebit comhead"> (<a href="from?site=chicagomag.com"><span class="sitestr">chicagomag.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35913083">34 points</span> by <a href="user?id=effects" class="hnuser">effects</a> <span class="age" title="2023-05-12T07:28:04"><a href="item?id=35913083">7 hours ago</a></span> <span id="unv_35913083"></span> | <a href="hide?id=35913083&amp;goto=news">hide</a> | <a href="item?id=35913083">3&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35914473'>
+  <td align="right" valign="top" class="title"><span class="rank">17.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35914473'href='vote?id=35914473&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="item?id=35914473">Ask HN: Where to Feature Startup on Spanish, Portuguese, German, French?</a></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35914473">52 points</span> by <a href="user?id=OnlyMateo" class="hnuser">OnlyMateo</a> <span class="age" title="2023-05-12T10:55:57"><a href="item?id=35914473">4 hours ago</a></span> <span id="unv_35914473"></span> | <a href="hide?id=35914473&amp;goto=news">hide</a> | <a href="item?id=35914473">17&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35904773'>
+  <td align="right" valign="top" class="title"><span class="rank">18.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35904773'href='vote?id=35904773&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://www.anthropic.com/index/100k-context-windows">100K Context Windows</a><span class="sitebit comhead"> (<a href="from?site=anthropic.com"><span class="sitestr">anthropic.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35904773">843 points</span> by <a href="user?id=samwillis" class="hnuser">samwillis</a> <span class="age" title="2023-05-11T16:46:19"><a href="item?id=35904773">22 hours ago</a></span> <span id="unv_35904773"></span> | <a href="hide?id=35904773&amp;goto=news">hide</a> | <a href="item?id=35904773">356&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35912318'>
+  <td align="right" valign="top" class="title"><span class="rank">19.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35912318'href='vote?id=35912318&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://www.zelda.com/tears-of-the-kingdom/">The Legend of Zelda: Tears of the Kingdom Release</a><span class="sitebit comhead"> (<a href="from?site=zelda.com"><span class="sitestr">zelda.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35912318">493 points</span> by <a href="user?id=etrvic" class="hnuser">etrvic</a> <span class="age" title="2023-05-12T05:38:18"><a href="item?id=35912318">9 hours ago</a></span> <span id="unv_35912318"></span> | <a href="hide?id=35912318&amp;goto=news">hide</a> | <a href="item?id=35912318">507&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35898768'>
+  <td align="right" valign="top" class="title"><span class="rank">20.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35898768'href='vote?id=35898768&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://www.cidrdb.org/cidr2021/papers/cidr2021_paper16.pdf">New Directions in Cloud Programming [pdf]</a><span class="sitebit comhead"> (<a href="from?site=cidrdb.org"><span class="sitestr">cidrdb.org</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35898768">52 points</span> by <a href="user?id=luu" class="hnuser">luu</a> <span class="age" title="2023-05-11T07:07:34"><a href="item?id=35898768">9 hours ago</a></span> <span id="unv_35898768"></span> | <a href="hide?id=35898768&amp;goto=news">hide</a> | <a href="item?id=35898768">4&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35913249'>
+  <td align="right" valign="top" class="title"><span class="rank">21.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35913249'href='vote?id=35913249&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://hedgehogreview.com/web-features/thr/posts/encountering-the-high-arctic?ref=thebrowser.com">Encountering the High Arctic</a><span class="sitebit comhead"> (<a href="from?site=hedgehogreview.com"><span class="sitestr">hedgehogreview.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35913249">16 points</span> by <a href="user?id=onemind" class="hnuser">onemind</a> <span class="age" title="2023-05-12T07:52:31"><a href="item?id=35913249">7 hours ago</a></span> <span id="unv_35913249"></span> | <a href="hide?id=35913249&amp;goto=news">hide</a> | <a href="item?id=35913249">discuss</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35871565'>
+  <td align="right" valign="top" class="title"><span class="rank">22.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35871565'href='vote?id=35871565&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://defector.com/into-thin-airpods">Into Thin AirPods</a><span class="sitebit comhead"> (<a href="from?site=defector.com"><span class="sitestr">defector.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35871565">145 points</span> by <a href="user?id=throwaway2037" class="hnuser">throwaway2037</a> <span class="age" title="2023-05-09T08:27:06"><a href="item?id=35871565">9 hours ago</a></span> <span id="unv_35871565"></span> | <a href="hide?id=35871565&amp;goto=news">hide</a> | <a href="item?id=35871565">132&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35915987'>
+  <td align="right" valign="top" class="title"><span class="rank">23.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35915987'href='vote?id=35915987&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="item?id=35915987">What Are Your Biggest Challenges and How Are You Overcoming Them?</a></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35915987">14 points</span> by <a href="user?id=vietyork" class="hnuser">vietyork</a> <span class="age" title="2023-05-12T13:31:27"><a href="item?id=35915987">1 hour ago</a></span> <span id="unv_35915987"></span> | <a href="hide?id=35915987&amp;goto=news">hide</a> | <a href="item?id=35915987">3&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35910201'>
+  <td align="right" valign="top" class="title"><span class="rank">24.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35910201'href='vote?id=35910201&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html">How to do distributed locking (2016)</a><span class="sitebit comhead"> (<a href="from?site=kleppmann.com"><span class="sitestr">kleppmann.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35910201">87 points</span> by <a href="user?id=thealig" class="hnuser">thealig</a> <span class="age" title="2023-05-12T00:17:44"><a href="item?id=35910201">14 hours ago</a></span> <span id="unv_35910201"></span> | <a href="hide?id=35910201&amp;goto=news">hide</a> | <a href="item?id=35910201">7&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35907432'>
+  <td align="right" valign="top" class="title"><span class="rank">25.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35907432'href='vote?id=35907432&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://www.themarginalian.org/2017/10/11/a-life-of-ones-own-joanna-field-marion-milner/">A Life of One’s Own: Marion Milner (2017)</a><span class="sitebit comhead"> (<a href="from?site=themarginalian.org"><span class="sitestr">themarginalian.org</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35907432">23 points</span> by <a href="user?id=llvm" class="hnuser">llvm</a> <span class="age" title="2023-05-11T19:44:42"><a href="item?id=35907432">11 hours ago</a></span> <span id="unv_35907432"></span> | <a href="hide?id=35907432&amp;goto=news">hide</a> | <a href="item?id=35907432">2&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35903294'>
+  <td align="right" valign="top" class="title"><span class="rank">26.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35903294'href='vote?id=35903294&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://badar.tech/2023/04/30/electronics-lab-bench-setup-guide/">Electronics Lab Bench Setup Guide</a><span class="sitebit comhead"> (<a href="from?site=badar.tech"><span class="sitestr">badar.tech</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35903294">539 points</span> by <a href="user?id=stacktrust" class="hnuser">stacktrust</a> <span class="age" title="2023-05-11T15:09:04"><a href="item?id=35903294">1 day ago</a></span> <span id="unv_35903294"></span> | <a href="hide?id=35903294&amp;goto=news">hide</a> | <a href="item?id=35903294">228&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35907015'>
+  <td align="right" valign="top" class="title"><span class="rank">27.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35907015'href='vote?id=35907015&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://ibramenu.io/">Ibramenu: Bash-based self-hosted app deployment</a><span class="sitebit comhead"> (<a href="from?site=ibramenu.io"><span class="sitestr">ibramenu.io</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35907015">47 points</span> by <a href="user?id=indigodaddy" class="hnuser">indigodaddy</a> <span class="age" title="2023-05-11T19:16:49"><a href="item?id=35907015">14 hours ago</a></span> <span id="unv_35907015"></span> | <a href="hide?id=35907015&amp;goto=news">hide</a> | <a href="item?id=35907015">27&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35908455'>
+  <td align="right" valign="top" class="title"><span class="rank">28.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35908455'href='vote?id=35908455&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://store.google.com/product/pixel_tablet?hl=en-US">Pixel Tablet</a><span class="sitebit comhead"> (<a href="from?site=store.google.com"><span class="sitestr">store.google.com</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35908455">250 points</span> by <a href="user?id=abawany" class="hnuser">abawany</a> <span class="age" title="2023-05-11T21:12:18"><a href="item?id=35908455">17 hours ago</a></span> <span id="unv_35908455"></span> | <a href="hide?id=35908455&amp;goto=news">hide</a> | <a href="item?id=35908455">453&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35913260'>
+  <td align="right" valign="top" class="title"><span class="rank">29.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35913260'href='vote?id=35913260&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://www.laphamsquarterly.org/roundtable/how-much-smidgen">How much is a smidgen?</a><span class="sitebit comhead"> (<a href="from?site=laphamsquarterly.org"><span class="sitestr">laphamsquarterly.org</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35913260">41 points</span> by <a href="user?id=efface" class="hnuser">efface</a> <span class="age" title="2023-05-12T07:53:33"><a href="item?id=35913260">7 hours ago</a></span> <span id="unv_35913260"></span> | <a href="hide?id=35913260&amp;goto=news">hide</a> | <a href="item?id=35913260">40&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+            <tr class='athing' id='35896190'>
+  <td align="right" valign="top" class="title"><span class="rank">30.</span></td>      <td valign="top" class="votelinks"><center><a id='up_35896190'href='vote?id=35896190&amp;how=up&amp;goto=news'><div class='votearrow' title='upvote'></div></a></center></td><td class="title"><span class="titleline"><a href="https://twitter.com/paulg/status/1655925905527537666">When you lose the ability to write, you also lose some of your ability to think</a><span class="sitebit comhead"> (<a href="from?site=twitter.com/paulg"><span class="sitestr">twitter.com/paulg</span></a>)</span></span></td></tr><tr><td colspan="2"></td><td class="subtext"><span class="subline">
+      <span class="score" id="score_35896190">861 points</span> by <a href="user?id=blueridge" class="hnuser">blueridge</a> <span class="age" title="2023-05-11T01:39:24"><a href="item?id=35896190">1 day ago</a></span> <span id="unv_35896190"></span> | <a href="hide?id=35896190&amp;goto=news">hide</a> | <a href="item?id=35896190">531&nbsp;comments</a>        </span>
+          </td></tr>
+  <tr class="spacer" style="height:5px"></tr>
+        <tr class="morespace" style="height:10px"></tr><tr><td colspan="2"></td>
+  <td class='title'><a href='?p=2' class='morelink' rel='next'>More</a></td>    </tr>
+</table>
+</td></tr>
+<tr><td><img src="s.gif" height="10" width="0"><table width="100%" cellspacing="0" cellpadding="1"><tr><td bgcolor="#ff6600"></td></tr></table><br>
+<center><a href="https://www.ycombinator.com/apply/">Applications are open for YC Summer 2023</a></center><br>
+<center><span class="yclinks"><a href="newsguidelines.html">Guidelines</a> | <a href="newsfaq.html">FAQ</a> | <a href="lists">Lists</a> | <a href="https://github.com/HackerNews/API">API</a> | <a href="security.html">Security</a> | <a href="https://www.ycombinator.com/legal/">Legal</a> | <a href="https://www.ycombinator.com/apply/">Apply to YC</a> | <a href="mailto:hn@ycombinator.com">Contact</a></span><br><br>
+<form method="get" action="//hn.algolia.com/">Search: <input type="text" name="q" size="17" autocorrect="off" spellcheck="false" autocapitalize="off" autocomplete="false"></form></center></td></tr>      </table></center></body>
+  <script type='text/javascript' src='hn.js?ZMP1aX0w3aWi60BYoAGZ'></script>
 </html>
