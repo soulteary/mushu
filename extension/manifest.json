@@ -1,0 +1,25 @@
+{
+    "name": "mushu",
+    "version": "1.0.0",
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "background",
+        "tabs",
+        "webRequest"
+    ],
+    "host_permissions": [
+        "https://*/*",
+        "http://*/*"
+    ],
+    "manifest_version": 3
+}
