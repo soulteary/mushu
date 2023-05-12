@@ -1,39 +1,41 @@
 package server
 
 import (
-	"log"
+	"fmt"
 	"net/http"
+	"os"
 
+	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 )
 
 var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
+	CheckOrigin: func(r *http.Request) bool {
+		fmt.Println(r.Header.Get("Origin"))
+		return true
+	},
 }
 
-func Ws(hub *Hub, w http.ResponseWriter, r *http.Request) {
-	conn, err := upgrader.Upgrade(w, r, nil)
-	if err != nil {
-		log.Println(err)
-		return
-	}
-	client := &Client{Hub: hub, Conn: conn, Send: make(chan []byte, 256)}
-	client.Hub.Register <- client
+func WS(hub *Hub) func(c *gin.Context) {
+	return func(c *gin.Context) {
+		ws, err := upgrader.Upgrade(c.Writer, c.Request, nil)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		defer ws.Close()
 
-	go client.Write()
-	go client.Read()
+		client := &Client{Hub: hub, Conn: ws, Send: make(chan []byte, 256)}
+		client.Hub.Register <- client
+
+		go client.Write()
+		client.Read()
+	}
 }
 
-func Home(w http.ResponseWriter, r *http.Request) {
-	log.Println(r.URL)
-	if r.URL.Path != "/" {
-		http.Error(w, "Not found", http.StatusNotFound)
-		return
-	}
-	if r.Method != http.MethodGet {
-		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
-		return
-	}
-	http.ServeFile(w, r, "home.html")
+func Home(c *gin.Context) {
+	buf, _ := os.ReadFile("home.html")
+	c.Data(http.StatusOK, "text/html", buf)
 }
