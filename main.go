@@ -14,5 +14,6 @@ func main() {
 	r.GET("/", server.Home)
 	r.GET("/ws", server.WS(hub))
 	r.Any("/exchange", exchange.Exchange)
+	r.GET("/test", server.Test)
 	r.Run(define.APP_PORT)
 }

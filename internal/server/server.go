@@ -39,3 +39,8 @@ func Home(c *gin.Context) {
 	buf, _ := os.ReadFile("home.html")
 	c.Data(http.StatusOK, "text/html", buf)
 }
+
+func Test(c *gin.Context) {
+	buf, _ := os.ReadFile("test.html")
+	c.Data(http.StatusOK, "text/html", buf)
+}
