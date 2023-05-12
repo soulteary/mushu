@@ -1,4 +1,4 @@
-module mushu
+module github.com/soulteary/mushu
 
 go 1.20
 
