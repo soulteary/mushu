@@ -77,11 +77,13 @@ function BootStrap(conn, job, report, base, min, max) {
   // setInterval(w, 1000);
 
   // init tabs id cache
-  initTabsCache(job);
+  setInterval(function () {
+    initTabsCache(job);
+  }, 1000);
 
   // eg, stats report
   let s = stats(conn, report);
-  setInterval(s, 10000);
+  setInterval(s, 5000);
 
   // eg, inject code, scroll the page to bottom...
   // setInterval(function () {
@@ -98,11 +100,11 @@ function BootStrap(conn, job, report, base, min, max) {
  * @param {string} job
  * @returns void
  */
-function initTabsCache(job){
+function initTabsCache(job) {
   chrome.tabs.query({ url: job }, function (tabs) {
     tabs.forEach(function (tab) {
       TabIdCache = {};
-      TabIdCache[tab.id] = true;
+      TabIdCache[tab.id] = job;
     });
   });
 }
@@ -116,7 +118,7 @@ function ExecuteAll(job, fn, isFile) {
   chrome.tabs.query({ url: job }, function (tabs) {
     tabs.forEach(function (tab) {
       TabIdCache = {};
-      TabIdCache[tab.id] = true;
+      TabIdCache[tab.id] = job;
 
       if (isFile) {
         ExecuteByID([tab.id], { isCommand: true, file: fn });
@@ -173,7 +175,10 @@ function ExecuteByID(tabIDs, command) {
       details.file = command.file;
       break;
     case MUSHU_ACTION.RELOAD:
-      details.code = "window.location.reload()";
+      tabIDs.forEach(function (tabID) {
+        chrome.tabs.reload(Number(tabID));
+      })
+      details.code = `winow.location.reload()`;
       break;
     case MUSHU_ACTION.DOCUMENT:
       details.code = "document.documentElement.outerHTML";
@@ -254,7 +259,7 @@ function CreateWebsocketConn(server, report) {
     if (message.startsWith("[插件消息]") || message.startsWith("[浏览器消息]")) return;
     let data = checkCommand(message);
     if (!data.isCommand) return;
-    console.log(Object.keys(TabIdCache))
+    console.log(Object.keys(TabIdCache));
     ExecuteByID(Object.keys(TabIdCache), data);
   };
   conn.onopen = function () {

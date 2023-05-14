@@ -2,40 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Example</title>
-    <script type="text/javascript">
-        function initWS() {
-            let statusBar = document.getElementById("status-bar");
-            if (window["WebSocket"]) {
-                conn = new WebSocket("ws://" + document.location.host + "/ws");
-                conn.onclose = function (evt) {
-                    statusBar.innerHTML = "连接中断，请启动服务后刷新页面";
-                    statusBar.style.backgroundColor = "grey";
-                };
-                conn.onmessage = function (evt) {
-                    var messages = evt.data.split('\n');
-                    for (var i = 0; i < messages.length; i++) {
-                        console.log("[用户消息] " + messages[i])
-                    }
-                };
-                conn.onopen = function (evt) {
-                    statusBar.innerHTML = "连接就绪";
-                    statusBar.style.backgroundColor = "green";
-                };
-            }
-            return conn;
-        }
-
-        window.onload = function () {
-            let conn = initWS();
-            setInterval(() => {
-                conn.send("[!MUSHU:RELOAD]")
-                conn.send("[!MUSHU:DOCUMENT]")
-                conn.send("[!MUSHU:SCROLL]")
-                conn.send("[!MUSHU:CLICK]#hnmain .pagetop b.hnname a")
-            }, 2000);
-        };
-    </script>
+    <title>Usage</title>
     <style>
         body {
             padding-top: 30px;
@@ -59,12 +26,96 @@
 
 <body>
     <div id="status-bar"></div>
+    <h1>使用文档</h1>
+    <h2>前置操作</h2>
+    <p>1. 确保服务已运行，插件正确被浏览器加载，打开<a href="/page/console.html" target="mushu-console">实时控制台</a>，稍停留几秒，能够看到“stats ok”的消息。
+    </p>
+    <p>2. 打开一个测试页面，可以将窗口拖到一边，观察命令是否执行成功，<a href="/test.html" target="mushu-test">内置示例页面</a>。</p>
+    <hr>
 
-    <div id="log"></div>
-    <form id="form">
-        <input type="submit" value="Send" />
-        <input type="text" id="msg" size="64" autofocus />
-    </form>
+    <h2>命令：滚动页面</h2>
+    <p>命令代码：<code>[!MUSHU:SCROLL]</code></p>
+    <p>作用：让目标页面滚动至底部。</p>
+    <h3>试试看</h3>
+    <p>点击<button id="scroll">按钮</button>，看看页面是否已经滚动到底部。</p>
+    <hr>
+
+    <h2>命令：获取文档</h2>
+    <p>命令代码：<code>[!MUSHU:DOCUMENT]</code></p>
+    <p>作用：获取页面当前渲染的文档结果。</p>
+    <h3>试试看</h3>
+    <p>点击<button id="doc">按钮</button>，查看是否获取到页面内容。</p>
+    <p>
+        <textarea id="body-container" cols="50" rows="3"></textarea>
+    </p>
+    <hr>
+
+    <h2>命令：点击元素</h2>
+    <p>命令代码：<code>[!MUSHU:CLICK]</code></p>
+    <p>作用：触发页面某个元素的点击事件</p>
+    <h3>试试看</h3>
+    <p>点击<button id="link-click">按钮</button>，看看页面点击事件是否触发（页面跳转）。</p>
+    <hr>
+
+
+    <h2>命令：刷新页面</h2>
+    <p>命令代码：<code>[!MUSHU:RELOAD]</code></p>
+    <p>作用：让目标页面刷新。</p>
+    <h3>试试看</h3>
+    <p>点击<button id="reload">按钮</button>，看看页面是否已经刷新。</p>
+    <hr>
+
+    <script type="text/javascript">
+        function initWS() {
+            let statusBar = document.getElementById("status-bar");
+            if (window["WebSocket"]) {
+                conn = new WebSocket("ws://" + document.location.host + "/ws");
+                conn.onclose = function (evt) {
+                    statusBar.innerHTML = "连接中断，请启动服务后刷新页面";
+                    statusBar.style.backgroundColor = "grey";
+                };
+                conn.onmessage = function (evt) {
+                    var messages = evt.data.split('\n');
+                    for (var i = 0; i < messages.length; i++) {
+                        console.log("[用户消息] " + messages[i])
+                    }
+                };
+                conn.onopen = function (evt) {
+                    statusBar.innerHTML = "连接就绪";
+                    statusBar.style.backgroundColor = "green";
+                };
+            }
+            return conn;
+        }
+
+        // 示例代码
+        let conn = null;
+        window.onload = function () {
+            conn = initWS();
+
+            document.getElementById("reload").onclick = function (e) {
+                e.preventDefault();
+                conn.send("[!MUSHU:RELOAD]")
+            }
+
+            document.getElementById("scroll").onclick = function (e) {
+                e.preventDefault();
+                conn.send("[!MUSHU:SCROLL]")
+            }
+
+            document.getElementById("doc").onclick = function (e) {
+                e.preventDefault();
+                conn.send("[!MUSHU:DOCUMENT]")
+            }
+
+            document.getElementById("link-click").onclick = function (e) {
+                e.preventDefault();
+                conn.send("[!MUSHU:CLICK]#hnmain .pagetop b.hnname a")
+            }
+        };
+
+    </script>
 </body>
+
 
 </html>
