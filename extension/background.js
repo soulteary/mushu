@@ -73,22 +73,39 @@ async function AppInit() {
 
 function BootStrap(conn, job, report, base, min, max) {
   // reload the page, auto renew the session
-  let w = watchdog(conn, job, report, base, min, max);
-  setInterval(w, 1000);
+  // let w = watchdog(conn, job, report, base, min, max);
+  // setInterval(w, 1000);
+
+  // init tabs id cache
+  initTabsCache(job);
 
   // eg, stats report
   let s = stats(conn, report);
-  setInterval(s, 1000);
+  setInterval(s, 10000);
 
   // eg, inject code, scroll the page to bottom...
-  setInterval(function () {
-    ExecuteAll(job, "scroll.js", true);
-  }, 1000);
+  // setInterval(function () {
+  // ExecuteAll(job, "scroll.js", true);
+  // }, 1000);
 }
 
 /*! --------------------------------
 // chrome functions
 -------------------------------- */
+
+/**
+ * Init the Chrome tabs ID cache
+ * @param {string} job
+ * @returns void
+ */
+function initTabsCache(job){
+  chrome.tabs.query({ url: job }, function (tabs) {
+    tabs.forEach(function (tab) {
+      TabIdCache = {};
+      TabIdCache[tab.id] = true;
+    });
+  });
+}
 
 /**
  * Execute the given command
@@ -100,19 +117,79 @@ function ExecuteAll(job, fn, isFile) {
     tabs.forEach(function (tab) {
       TabIdCache = {};
       TabIdCache[tab.id] = true;
-      ExecuteByID([tab.id], fn, isFile);
+
+      if (isFile) {
+        ExecuteByID([tab.id], { isCommand: true, file: fn });
+      } else {
+        let data = checkCommand(fn);
+        if (!data.isCommand) return;
+        ExecuteByID([tab.id], data);
+      }
     });
   });
 }
 
-function ExecuteByID(tabIDs, fn, isFile) {
-  console.log(tabIDs, fn, isFile);
-  let details = { allFrames: false };
-  if (isFile) {
-    details.file = fn;
-  } else {
-    details.code = fn;
+const MUSHU_ACTION = {
+  CLICK: "click",
+  SCROLL: "scroll",
+  RELOAD: "reload",
+  DOCUMENT: "document",
+};
+
+let COMMAND_REGEXP = /^(\[!MUSHU:.+?\])(.*)/;
+function checkCommand(message) {
+  let payload = message + "";
+  if (!payload.startsWith("[!MUSHU:")) {
+    console.log(message);
+    return { isCommand: false, message: message };
   }
+  let [, command, content] = COMMAND_REGEXP.exec(message);
+  command = command.toUpperCase().trim();
+  content = content.trim();
+  switch (command) {
+    case "[!MUSHU:CLICK]":
+      return { isCommand: true, action: MUSHU_ACTION.CLICK, content: content };
+    case "[!MUSHU:SCROLL]":
+      return { isCommand: true, action: MUSHU_ACTION.SCROLL, file: "scroll.js" };
+    case "[!MUSHU:RELOAD]":
+      return { isCommand: true, action: MUSHU_ACTION.RELOAD };
+    case "[!MUSHU:DOCUMENT]":
+      return { isCommand: true, action: MUSHU_ACTION.DOCUMENT };
+    default:
+      console.log(command, message);
+      return { isCommand: false, message: message };
+  }
+}
+
+function ExecuteByID(tabIDs, command) {
+  console.log("[ExecuteByID]", tabIDs, command);
+  let details = { allFrames: false };
+
+  switch (command.action) {
+    case MUSHU_ACTION.CLICK:
+      details.code = `document.querySelector("${command.content}").click()`;
+      break;
+    case MUSHU_ACTION.SCROLL:
+      details.file = command.file;
+      break;
+    case MUSHU_ACTION.RELOAD:
+      details.code = "window.location.reload()";
+      break;
+    case MUSHU_ACTION.DOCUMENT:
+      details.code = "document.documentElement.outerHTML";
+      break;
+    default:
+      if (command.file) {
+        details.file = command.file;
+      } else {
+        if (!content) {
+          return;
+        }
+        details.code = content;
+      }
+      break;
+  }
+
   tabIDs.forEach(function (tabID) {
     chrome.tabs.executeScript(Number(tabID), details, function (result) {
       console.log("执行结果:", result);
@@ -175,9 +252,10 @@ function CreateWebsocketConn(server, report) {
     var message = (evt.data + "").trim();
     if (!message) return;
     if (message.startsWith("[插件消息]") || message.startsWith("[浏览器消息]")) return;
-    console.log(message);
-
-    ExecuteByID(Object.keys(TabIdCache), message);
+    let data = checkCommand(message);
+    if (!data.isCommand) return;
+    console.log(Object.keys(TabIdCache))
+    ExecuteByID(Object.keys(TabIdCache), data);
   };
   conn.onopen = function () {
     ConnReady = true;

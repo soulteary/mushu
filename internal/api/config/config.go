@@ -19,7 +19,7 @@ type RemoteConfig struct {
 	MaxTime  int64  `json:"max"`
 }
 
-const JOB_URL = "http://localhost:8080/test"
+const JOB_URL = "http://localhost:8080/test.html"
 const BACKENT_SERVER = "ws://localhost:8080/ws"
 const REPORT_URL = "http://localhost:8080/exchange"
 
