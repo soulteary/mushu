@@ -36,11 +36,21 @@ func WS(hub *Hub) func(c *gin.Context) {
 }
 
 func Home(c *gin.Context) {
-	buf, _ := os.ReadFile("home.html")
+	buf, _ := os.ReadFile("templates/home.html")
+	c.Data(http.StatusOK, "text/html", buf)
+}
+
+func Console(c *gin.Context) {
+	buf, _ := os.ReadFile("templates/console.html")
+	c.Data(http.StatusOK, "text/html", buf)
+}
+
+func Usage(c *gin.Context) {
+	buf, _ := os.ReadFile("templates/usage.html")
 	c.Data(http.StatusOK, "text/html", buf)
 }
 
 func Test(c *gin.Context) {
-	buf, _ := os.ReadFile("test.html")
+	buf, _ := os.ReadFile("templates/test.html")
 	c.Data(http.StatusOK, "text/html", buf)
 }

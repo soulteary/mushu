@@ -13,9 +13,11 @@ func main() {
 	go hub.Run()
 	r := gin.Default()
 	r.GET("/", server.Home)
+	r.GET("/test.html", server.Test)
+	r.GET("/page/console.html", server.Console)
+	r.GET("/page/usage.html", server.Usage)
 	r.GET("/ws", server.WS(hub))
 	r.Any("/exchange", exchange.Exchange)
-	r.GET("/test", server.Test)
 	r.POST("/config", config.Config)
 	r.Run(define.APP_PORT)
 }
