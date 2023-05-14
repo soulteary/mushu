@@ -2,6 +2,12 @@ const DEFAULT_REPORT_SERVER = "http://localhost:8080/Exchange";
 let ConnReady = false;
 let Mutex = false;
 let TabIdCache = {};
+let conn = null;
+
+var MESSAGE_TYPE = {
+  PLUGIN: "plugin",
+  EXECUTED: "executed",
+};
 
 /*! --------------------------------
 // Simple Execution Process
@@ -13,9 +19,8 @@ AppInit()
       Exchange(DEFAULT_REPORT_SERVER, "fail to fetch the config");
       return;
     }
-
     const { job, server, report, base, min, max } = config;
-    let conn = CreateWebsocketConn(server, report);
+    conn = CreateWebsocketConn(server, report);
 
     let connChecker = setInterval(function () {
       if (ConnReady) {
@@ -41,11 +46,11 @@ function watchdog(conn, job, report, base, min, max) {
     // delay execution after
     var delay = getRandomDelay(base, min, max);
     Mutex = true;
-    SendMessage(conn, "创建延时任务:" + delay + "秒后执行", report, true);
+    SendMessage(conn, "创建延时任务:" + delay + "秒后执行", report, MESSAGE_TYPE.PLUGIN);
     setTimeout(function () {
       Mutex = false;
       ReloadPage(job, function (data) {
-        SendMessage(conn, "页面重载执行结果" + data, report, true);
+        SendMessage(conn, "页面重载执行结果" + data, report, MESSAGE_TYPE.PLUGIN);
       });
     }, delay * 1000);
   };
@@ -54,7 +59,7 @@ function watchdog(conn, job, report, base, min, max) {
 // Continuously collect data
 function stats(conn, report) {
   return function () {
-    SendMessage(conn, "stats ok", report, true);
+    SendMessage(conn, "stats ok", report, MESSAGE_TYPE.PLUGIN);
   };
 }
 
@@ -156,7 +161,7 @@ function checkCommand(message) {
     case "[!MUSHU:RELOAD]":
       return { isCommand: true, action: MUSHU_ACTION.RELOAD };
     case "[!MUSHU:DOCUMENT]":
-      return { isCommand: true, action: MUSHU_ACTION.DOCUMENT };
+      return { isCommand: true, action: MUSHU_ACTION.DOCUMENT, id: content };
     default:
       console.log(command, message);
       return { isCommand: false, message: message };
@@ -177,7 +182,7 @@ function ExecuteByID(tabIDs, command) {
     case MUSHU_ACTION.RELOAD:
       tabIDs.forEach(function (tabID) {
         chrome.tabs.reload(Number(tabID));
-      })
+      });
       details.code = `winow.location.reload()`;
       break;
     case MUSHU_ACTION.DOCUMENT:
@@ -197,7 +202,21 @@ function ExecuteByID(tabIDs, command) {
 
   tabIDs.forEach(function (tabID) {
     chrome.tabs.executeScript(Number(tabID), details, function (result) {
-      console.log("执行结果:", result);
+      switch (command.action) {
+        case MUSHU_ACTION.DOCUMENT:
+          if (result && result.length > 0) {
+            console.log("执行结果:", result);
+            Exchange("http://localhost:8080/kv/" + command.id, result[0]).then(function (data) {
+              SendMessage(conn, command.id, "", MESSAGE_TYPE.EXECUTED);
+            });  
+          }
+          break;
+        default:
+          if (!command.file) {
+            console.log("执行结果:", result, command.action);
+          }
+          break;
+      }
     });
   });
 }
@@ -257,6 +276,7 @@ function CreateWebsocketConn(server, report) {
     var message = (evt.data + "").trim();
     if (!message) return;
     if (message.startsWith("[插件消息]") || message.startsWith("[浏览器消息]")) return;
+    if (message.startsWith("[MUSHU:EXECUTED]")) return;
     let data = checkCommand(message);
     if (!data.isCommand) return;
     console.log(Object.keys(TabIdCache));
@@ -268,15 +288,23 @@ function CreateWebsocketConn(server, report) {
   return conn;
 }
 
-function SendMessage(conn, message, report, isPlugin) {
+function SendMessage(conn, message, report, messageType) {
   if (ConnReady) {
-    if (isPlugin) {
-      conn.send("[插件消息] " + message);
-    } else {
-      conn.send("[浏览器消息] " + message);
+    switch (messageType) {
+      case MESSAGE_TYPE.PLUGIN:
+        conn.send("[插件消息] " + message);
+        break;
+      case MESSAGE_TYPE.EXECUTED:
+        conn.send("[MUSHU:EXECUTED] " + message);
+        break;
+      default:
+        conn.send("[浏览器消息] " + message);
+        break;
     }
   } else {
-    Exchange(report, "Connection unexpected interruption.");
+    if (report) {
+      Exchange(report, "Connection unexpected interruption.");
+    }
   }
 }
 

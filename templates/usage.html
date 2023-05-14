@@ -75,9 +75,14 @@
                     statusBar.style.backgroundColor = "grey";
                 };
                 conn.onmessage = function (evt) {
-                    var messages = evt.data.split('\n');
-                    for (var i = 0; i < messages.length; i++) {
-                        console.log("[用户消息] " + messages[i])
+                    var message = (evt.data + "").trim();
+                    if (message.startsWith("[MUSHU:EXECUTED]")) {
+                        jobId = message.slice("[MUSHU:EXECUTED]".length).trim();
+                        var event = new CustomEvent("doc" + jobId);
+                        console.log("trigger", "doc" + jobId)
+                        window.dispatchEvent(event);
+                    } else {
+                        console.log("[收到消息] " + message)
                     }
                 };
                 conn.onopen = function (evt) {
@@ -105,7 +110,16 @@
 
             document.getElementById("doc").onclick = function (e) {
                 e.preventDefault();
-                conn.send("[!MUSHU:DOCUMENT]")
+                var jobId = (new Date - 0)
+                window.addEventListener("doc" + jobId, function (e) {
+                    console.log("!", e, jobId)
+                    fetch("http://localhost:8080/kv/" + jobId).then(function (response) {
+                        return response.text();
+                    }).then(function (body) {
+                        document.getElementById("body-container").value = body;
+                    })
+                });
+                conn.send("[!MUSHU:DOCUMENT]" + jobId)
             }
 
             document.getElementById("link-click").onclick = function (e) {
